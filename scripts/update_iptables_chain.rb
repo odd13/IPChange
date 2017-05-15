@@ -2,9 +2,11 @@
 
 require 'sqlite3'
 
+system("sudo iptables -F")
+
 def cmd(cmd_options)
   #system("echo " + cmd_options)
-  system("sudo iptables -F")
+  #system("sudo iptables -F")
   system(cmd_options)
 end
 
