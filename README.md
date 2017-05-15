@@ -11,6 +11,10 @@ Ruby on Rails is required for this application.
 4. A cron script reviews the only NEW from the database and places them in the INPUT chain for iptables.
 5. The older entries are removed by compairing the new to the old.
 
+# Development Environment
+* Ubuntu 17.04
+* Ruby 
+* Rails
 
 # Run the app locally
 ## First steps to get the App
@@ -22,8 +26,21 @@ Ruby on Rails is required for this application.
 6. Run <code>rails server</code>
 7. Access the running app in a browser at http://localhost:3000
 
-## Second to create the cronjobs with the scripts
+## Second Configure the database
+1. Change to the directory of the application <code>cd IPChange</code>
+2. Make sure you have created the database, for the purpose of this demonstration I have kept the dastabase simple as a SQLite3 database. <code>rake db:create db:migrate</code> 
+3. Change to the scripts directory <code>cd scripts</code>
+4. Run the test script <code>ruby test_db_connection.rb</code> output: <code>Test successful, I can connect to the database</code> 
+
+## Third to create the cronjobs with the scripts
 1. Change to the application directoy <code>cd IPChange</code>
 2. Change to the scripts directory <code>cd scripts</code>
-3. For this step you will need to crontab to have the listed script run on a time you require;
-  <code></code>
+3. For this step you will need to edit crontab to have the listed script run on a time you require;
+  <code>sudo crontab -e</code> and add the following: <code>5 * * * * /home//<yourusername/>/IPChange/scripts/update_iptables.sh</code>
+
+<code>update_iptables.sh</code> will now run every 5 minutes: 
+ * check for new user IP address added to the database. 
+ * Remove old iptabvle chain entries
+ * Add's those new to the iptables chain.
+
+ 
