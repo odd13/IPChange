@@ -5,7 +5,7 @@ This is a session logging application that will be placing in iptables rules for
 Ruby on Rails is required for this application.
 
 # Process Overview 
-![Image of Process](https://octodex.github.com/images/IPchange.png)
+![Image of Process](https://github.com/odd13/IPChange/images/IPchange.png)
 1. User is fronted with a login page.
 2. User logs and the page display ("Thanks for logging in").
 3. At the session login, the users login time, IP and flag to show that this is a new IP for the user is placed into a table.
