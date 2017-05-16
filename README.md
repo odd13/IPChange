@@ -5,7 +5,7 @@ This is a session logging application that will be placing in iptables rules for
 Ruby on Rails knowledge and a current working iptables set of rules [IPTables Information](https://help.ubuntu.com/community/IptablesHowTo).
 
 # Process Overview 
-![Image of Process](https://github.com/odd13/IPChange/blob/master/images/ipchange.png)
+![Image of Process](https://raw.githubusercontent.com/odd13/IPChange/master/images/ipchange.png)
 1. User is fronted with a login page.
 2. User logs and the page display ("Thanks for logging in").
 3. At the session login, the users login time is placed into a table.
