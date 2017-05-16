@@ -1,5 +1,6 @@
 # IPChange
 This is a session logging application that will be placing in iptables rules for customers with dynamic IP addresses that require remote access.
+<hr>
 
 # Requirements
 Ruby on Rails knowledge and a current working iptables set of rules [IPTables Information](https://help.ubuntu.com/community/IptablesHowTo).
