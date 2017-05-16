@@ -1,8 +1,9 @@
-#!/usr/bin/ruby
+#!/home/odd13/.rubies/ruby-2.3.1/bin/ruby
 
 require 'sqlite3'
 
-system("sudo iptables -F")
+system("iptables -F")
+system("iptables-restore < /etc/ipsave.cfg")
 
 def cmd(cmd_options)
   #system("echo " + cmd_options)
@@ -12,7 +13,7 @@ end
 
 
 begin
-    db = SQLite3::Database.open "/home/oddie/projects/ipchange/db/development.sqlite3"
+    db = SQLite3::Database.open "/home/odd13/projects/ipchange/db/development.sqlite3"
 
     stm = db.prepare "SELECT email, last_sign_in_ip FROM users" 
     rs = stm.execute 
@@ -21,7 +22,7 @@ begin
       if row[1].nil?
         exit
       else
-        puts cmd("sudo iptables -A INPUT -p tcp --dport 80 -s #{row[1].to_s} -j ACCEPT")
+        puts cmd("iptables -A INPUT -s #{row[1].to_s} -p tcp -m tcp --dport 1511 -m state --state NEW -j ACCEPT")
       end
       # puts row.join "\s"
     end
